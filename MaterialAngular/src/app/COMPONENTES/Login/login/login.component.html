@@ -1,0 +1,39 @@
+<body  style="background-color: rgba(163, 163, 163, 0.486);">
+<div class="col-md-4 mx-auto">
+    <div class="card">
+  <form [formGroup]="addressForm" novalidate (ngSubmit)="onLogin()">
+    <mat-card class="mat_card ">
+      <mat-card-content>
+        <div class="card-header">
+          <h2><u>Iniciar Sesión</u></h2>
+        </div>
+  
+        <div class="row card-body">
+          <div class="col">
+            <mat-form-field class="mat-form-field">
+              <input type ="text" [(ngModel)]="user.nombre" matInput placeholder="nombre" formControlName="nombre" required autofocus>
+              <mat-error *ngIf="addressForm.controls['nombre'].hasError('required')">
+                <strong style="color: red;">Campo Requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="row card-body">
+          <div class="col">
+            <mat-form-field class="mat-form-field">
+              <input type ="password" [(ngModel)]="user.contrasena" matInput placeholder="contraseña" formControlName="contrasena" required >
+              <mat-error *ngIf="addressForm.controls['contrasena'].hasError('required')">
+                <strong style="color: red">Campo Requerido</strong>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" [disabled] = "addressForm.invalid" type="submit" >Ingresar</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+  </div>
+  </div>
+</body>

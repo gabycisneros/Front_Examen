@@ -1,0 +1,87 @@
+<body style="background-color: rgba(163, 163, 163, 0.486);">
+<div class="mat-elevation-z8">
+  <table mat-table class="full-width-table" matSort aria-label="Elements" style="border: 1px solid;">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="id_persona">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id_persona</th>
+      <td mat-cell *matCellDef="let row">{{row.id_persona}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+      <td mat-cell *matCellDef="let row">{{row.nombre}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="apellido">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+      <td mat-cell *matCellDef="let row">{{row.apellido}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="fecha_nacimiento">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha_Nacimiento</th>
+      <td mat-cell *matCellDef="let row">{{row.fecha_nacimiento}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="direccion">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Dirección</th>
+      <td mat-cell *matCellDef="let row">{{row.direccion}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="carnet">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Carne</th>
+      <td mat-cell *matCellDef="let row">{{row.carnet}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="fecha_ingreso">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha_Ingreso</th>
+      <td mat-cell *matCellDef="let row">{{row.fecha_ingreso}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+      <td mat-cell *matCellDef="let row">{{row.status}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Acciones">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header></th>
+      <td mat-cell *matCellDef="let row">
+        <a class="puntero" style="color :rgb(135, 250, 141)" matTooltip="Ver Persona">
+          <mat-icon>Buscar</mat-icon>
+        </a>
+        <a class="puntero" (click)="modificar(row.id)" style="color:rgb(184, 30, 255)" matTooltip="Editar Persona">
+          <mat-icon>Editar</mat-icon>
+        </a>
+        <a class="puntero" (click)="eliminarPersonas(row.id)" style="color :rgb(139, 130, 0)" matTooltip="Eliminar Persona">
+          <mat-icon>Eliminar</mat-icon>
+        </a>
+      </td>
+      <td>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator #paginator
+      [length]="dataSource?.data?.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 20]"
+      aria-label="Select page">
+  </mat-paginator>
+</div>
+</body> 

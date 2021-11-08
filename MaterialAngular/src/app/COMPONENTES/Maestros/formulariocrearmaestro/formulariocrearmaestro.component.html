@@ -1,0 +1,32 @@
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title>Agregar Maestros</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="number" matInput placeholder="id_persona" formControlName="id_persona">
+            <mat-error *ngIf="addressForm.controls['id_persona'].hasError('required')">
+              id_persona is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="datetime-local" matInput placeholder="fecha_ingreso" formControlName="fecha_ingreso">
+            <mat-error *ngIf="addressForm.controls['fecha_ingreso'].hasError('required')">
+              fecha_ingreso is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="addressForm.invalid">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

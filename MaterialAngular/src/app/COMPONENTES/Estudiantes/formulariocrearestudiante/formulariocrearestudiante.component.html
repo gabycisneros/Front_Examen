@@ -1,0 +1,53 @@
+<body  style="background-color: rgba(163, 163, 163, 0.486);">
+<form [formGroup]="addressForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="shipping-card">
+    <mat-card-header>
+      <mat-card-title style="text-decoration: underline;"> <strong> Agregar estudiante </strong></mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="number" matInput placeholder="No de persona" formControlName="id_persona">
+            <mat-error *ngIf="addressForm.controls['id_persona'].hasError('required')">
+              Información <strong style="color: red;">Requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="datetime-local" matInput placeholder="fecha_ingreso" formControlName="fecha_ingreso">
+            <mat-error *ngIf="addressForm.controls['fecha_ingreso'].hasError('required')">
+              Fecha <strong style="color: red;">Requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input matInput placeholder="Carnet" formControlName="carnet">
+            <mat-error *ngIf="addressForm.controls['carnet'].hasError('required')">
+              Información <strong style="color: red;">Requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="col">
+          <mat-form-field class="full-width">
+            <input type="text" matInput placeholder="Estado" formControlName="status">
+            <mat-error *ngIf="addressForm.controls['status'].hasError('required')">
+              Información <strong style="color: red;">Requerida</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit" [disabled]="addressForm.invalid">Enviar</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
+</body>

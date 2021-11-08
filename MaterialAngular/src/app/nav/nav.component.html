@@ -1,0 +1,53 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/crearestudiante">Estudiantes</a>
+      <a mat-list-item routerLink="/crearpersona">Personas</a>
+      <a mat-list-item routerLink="/crearmaestro">Maestros</a>
+      <a mat-list-item routerLink="/crearcurso">Cursos</a>
+      <a mat-list-item routerLink="/Crearcursoestudiante">Cursos Estudiante</a>
+      <a mat-list-item routerLink="/Crearcursodocente">Cursos Docente</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>MaterialAngular</span>
+
+      <ng-container>
+        <a mat-button routerLink="/TablaMaestros">Maestro</a>
+        <a mat-button routerLink="/TablaEstudiante">Estudiante</a>
+        <a mat-button routerLink="/TablaPersonas">Personas</a>
+        <a mat-button routerLink="/Tablacurso">Cursos</a>
+        <a mat-button routerLink="/Tablacursoestudiante">C.Est</a>
+        <a mat-button routerLink="/Tablacursodocente">C.Doc</a>
+      </ng-container>
+
+      <ng-container *ngIf="!logedIn(); else elseTemplate">
+        <ul class="ml-auto">
+          <a mat-button routerLink="/login">Login</a>
+        </ul>
+      </ng-container>
+      <ng-template #elseTemplate>
+        <ul class="ml-auto">
+          <a mat-button (click)="onLogout()" >Salir</a>
+        </ul>
+      </ng-template>
+
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
